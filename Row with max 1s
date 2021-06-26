@@ -1,0 +1,21 @@
+class Solution:
+
+	def rowWithMax1s(self,arr, n, m):
+		# code here
+		dic = {}
+		for i in range(n):
+		    dic[i]= sum(arr[i])
+		
+		maxi = 0
+		for freq in dic.values():
+		    if maxi<freq:
+		        maxi=freq
+		if maxi==0:
+		    return -1
+		    
+		for ele in dic:
+		    if dic[ele]==maxi:
+		        return ele
+		        
+		return -1
+		
