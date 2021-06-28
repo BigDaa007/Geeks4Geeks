@@ -1,0 +1,31 @@
+import sys
+class Solution:
+    def minDist(self, arr, n, x, y):
+        prev = -1
+        availx,availy= 0,0
+        for ele in arr:
+            if ele==x: 
+                availx+=1
+            elif ele==y:
+                availy+=1
+        if not(availx>0 and availy>0):
+            return -1
+                
+        for i in range(n):
+            if arr[i]==x:
+                prev= i
+                break
+            if arr[i]==y:
+                prev= i
+                break
+                
+        diff = sys.maxsize
+        
+        for i in range(prev+1,n):
+            if arr[i]==x or arr[i]==y:
+                if not(arr[i]==arr[prev]) and (i-prev<=diff):
+                    diff = i-prev
+                    prev = i
+                else:
+                    prev = i
+        return diff
